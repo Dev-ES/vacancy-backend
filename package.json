@@ -1,0 +1,30 @@
+{
+  "name": "api-github",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/YSOUZAS/api-github.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/YSOUZAS/api-github/issues"
+  },
+  "homepage": "https://github.com/YSOUZAS/api-github#readme",
+  "devDependencies": {
+    "eslint": "^4.13.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-plugin-import": "^2.8.0",
+    "request": "^2.83.0",
+    "requestify": "^0.2.5",
+    "restify": "^6.3.4",
+    "restify-clients": "^1.5.2",
+    "restify-cors-middleware": "^1.1.0"
+  }
+}
