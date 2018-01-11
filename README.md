@@ -10,7 +10,6 @@ Neste repositório se encontra o pontapé inicial projeto proposto pelo canal Me
 Esta seção descreve a forma de configuração da aplicação, antes de iniciar, verifique se algumas das portas a seguir estão sendo utilizadas:
 
  - 3456 (Servidor NodeJS)
- - 1306 (MySQL)
 
 Todos as etapas a seguir foram executadas no terminal.
 
