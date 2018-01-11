@@ -1,0 +1,9 @@
+version:  '2'
+services:
+  node:
+    build:  ./backend
+    container_name: node-server
+    ports:
+      - "3456:3456"
+    expose:
+      - "3456"

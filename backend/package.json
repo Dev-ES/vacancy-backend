@@ -1,7 +1,7 @@
 {
   "name": "api-github",
   "version": "1.0.0",
-  "description": "",
+  "description": "the kick-off project proposed by the channel Mentoria from DevES Edit",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
