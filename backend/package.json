@@ -23,6 +23,7 @@
     "eslint": "^4.13.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-import": "^2.8.0",
+    "nodemon": "^1.14.11",
     "request": "^2.83.0",
     "requestify": "^0.2.5",
     "restify": "^6.3.4",
