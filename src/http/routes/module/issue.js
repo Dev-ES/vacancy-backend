@@ -4,10 +4,10 @@ const clients = require('restify-clients');
 module.exports = function issue(server) {
   server.get('/issues', (req, res, next) => {
     const client = clients.createJsonClient({
-      url: 'https://api.github.com/repos/ysouzas/hangout-vagas/issues',
+      url: process.env.URL,
       headers: {
         'User-Agent': 'request',
-        Authorization: `token ${process.env.TokenGITHUB}`,
+        Authorization: `token ${process.env.TOKENGITHUB}`,
       },
     });
     client.get('', (err, request, response, obj) => {
@@ -19,10 +19,10 @@ module.exports = function issue(server) {
 
   server.post('/issues', (req, res, next) => {
     const client = clients.createJsonClient({
-      url: 'https://api.github.com/repos/ysouzas/hangout-vagas/issues',
+      url: process.env.URL,
       headers: {
         'User-Agent': 'request',
-        Authorization: `token ${process.env.TokenGITHUB}`,
+        Authorization: `token ${process.env.TOKENGITHUB}`,
       },
     });
     client.post('', req.body, (err, request, response, obj) => {
