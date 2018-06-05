@@ -16,6 +16,10 @@ deploy:
     secure: $HEROKU_API_KEY
   on: develop
   app: vacancy-backend
+  run:
+    - "cd src"
+    - "npm install"
+    - "npm run app"
 
 notifications:
   slack: $SLACK
