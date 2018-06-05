@@ -1,3 +1,5 @@
 language: node_js
 node_js:
  - "node"
+notifications:
+  slack: bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm
