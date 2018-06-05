@@ -1,0 +1,14 @@
+language: node_js
+
+node_js:
+ - "node"
+
+install:
+ - cd src
+ - npm install
+
+script:
+ - npm test
+
+notifications:
+  slack: bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm

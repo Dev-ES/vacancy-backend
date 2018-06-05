@@ -1,0 +1,30 @@
+{
+  "name": "vacancy-backend",
+  "version": "1.0.0",
+  "description": "Aplicação server-side para ferramenta de gestão de vagas para desenvolvedores de software",
+  "main": "main/index.js",
+  "scripts": {
+    "start": "nodemon main/index.js --exec babel-node",
+    "build": "rimraf build/ && babel main -d build",
+    "app": "npm run build && node build/index.js",
+    "test": "cucumber-js ./test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dev-ES/vacancy-backend.git"
+  },
+  "author": "garymsilva && joseslima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dev-ES/vacancy-backend/issues"
+  },
+  "homepage": "https://github.com/Dev-ES/vacancy-backend#readme",
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-es2015": "^6.24.1",
+    "babel-preset-stage-2": "^6.24.1",
+    "cucumber": "^4.2.1",
+    "nodemon": "^1.17.5",
+    "rimraf": "^2.6.2"
+  }
+}
