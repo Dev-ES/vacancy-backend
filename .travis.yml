@@ -10,5 +10,12 @@ install:
 script:
  - npm test
 
+deploy:
+  provider: heroku
+  api_key: 
+    secure: $HEROKU_API_KEY
+  on: develop
+  app: vacancy_backend
+
 notifications:
-  slack: bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm
+  slack: $SLACK
