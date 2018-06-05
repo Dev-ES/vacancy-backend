@@ -8,7 +8,7 @@ install:
  - npm install
 
 script:
- - npm run app
+ - npm test
 
 notifications:
   slack: bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm
