@@ -1,26 +1,21 @@
 language: node_js
-
 node_js:
- - "node"
-
+- node
 install:
- - cd src
- - npm install
-
+- cd src
+- npm install
 script:
- - npm test
-
+- npm test
 deploy:
   provider: heroku
-  api_key: 
-    secure: $HEROKU_API_KEY
+  api_key:
+    secure: "$HEROKU_API_KEY"
   app:
     develop: vacancy-backend
   run:
-    - "cd src"
-    - "npm install"
-    - "npm run app"
-
+  - cd src
+  - npm install
+  - npm run app
 notifications:
   slack:
-    secure: $SLACK
+    secure: $SLACK_API_KEY
