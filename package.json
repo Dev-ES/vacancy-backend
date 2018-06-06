@@ -4,10 +4,10 @@
   "description": "Aplicação server-side para ferramenta de gestão de vagas para desenvolvedores de software",
   "main": "main/index.js",
   "scripts": {
-    "start": "nodemon main/index.js --exec babel-node",
-    "build": "rimraf build/ && babel main -d build",
-    "app": "npm run build && node build/index.js",
-    "test": "cucumber-js ./test"
+    "start": "nodemon src/main/index.js --exec babel-node",
+    "build": "rimraf src/build/ && babel src/main -d src/build",
+    "app": "npm run build && node src/build/index.js",
+    "test": "cucumber-js ./src/test"
   },
   "repository": {
     "type": "git",
