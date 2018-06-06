@@ -17,5 +17,4 @@ deploy:
   - npm install
   - npm run app
 notifications:
-  slack:
-    secure: "$SLACK_API_KEY"
+  slack: "bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm"
