@@ -22,4 +22,5 @@ deploy:
     - "npm run app"
 
 notifications:
-  slack: $SLACK
+  slack:
+    secure: $SLACK
