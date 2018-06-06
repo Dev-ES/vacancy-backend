@@ -13,5 +13,7 @@ deploy:
   app:
     develop: vacancy-backend
     feature/configure-continuous-integration: vacancy-backend
+  run:
+  - cd src
 notifications:
   slack: "bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm"
