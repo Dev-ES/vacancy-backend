@@ -12,9 +12,6 @@ deploy:
     secure: "$HEROKU_API_KEY"
   app:
     develop: vacancy-backend
-  run:
-  - cd src
-  - npm install
-  - npm run app
+    feature/configure-continuous-integration: vacancy-backend
 notifications:
   slack: "bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm"
