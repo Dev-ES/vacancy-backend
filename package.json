@@ -2,10 +2,10 @@
   "name": "vacancy-backend",
   "version": "1.0.0",
   "description": "Aplicação server-side para ferramenta de gestão de vagas para desenvolvedores de software",
-  "main": "main/index.js",
+  "main": "src/index.js",
   "scripts": {
-    "start": "nodemon main/index.js --exec babel-node",
-    "build": "rimraf build/ && babel main -d build",
+    "start": "nodemon src/index.js --exec babel-node",
+    "build": "rimraf build/ && babel src -d build",
     "app": "npm run build && node build/index.js",
     "test": "cucumber-js ./test"
   },
