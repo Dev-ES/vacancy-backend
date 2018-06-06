@@ -22,4 +22,4 @@ deploy:
     - "npm run app"
 
 notifications:
-  slack: bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm
+  slack: $SLACK
