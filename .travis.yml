@@ -18,4 +18,4 @@ deploy:
   - npm run app
 notifications:
   slack:
-    secure: $SLACK_API_KEY
+    secure: "$SLACK_API_KEY"
