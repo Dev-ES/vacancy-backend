@@ -2,7 +2,7 @@ import express from 'express';
 import Server from './lib/server';
 
 const hostname = 'localhost';
-const port = 3000;
+const port = process.env.PORT || 3000;
 
 var app = express();
 
@@ -11,5 +11,4 @@ app.get("/", (req, res) => {
   res.send("OK");
 });
 
-var server = new Server(hostname,port);
-server.start(app);
+app.listen(port);
