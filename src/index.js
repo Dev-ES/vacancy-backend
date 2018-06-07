@@ -1,8 +1,14 @@
-import http from 'http';
+import express from 'express';
+import Server from './lib/server';
 
-http.createServer((req, res) => {
-  res.writeHead(200, {'Content-Type': 'text/plain'});
-  res.end('Hello World\n');
-}).listen(5000);
+const hostname = 'localhost';
+const port = 3000;
 
-console.log('Server running...');
+var app = express();
+
+app.get("/", (req, res) => {
+  res.send("OK");
+});
+
+var server = new Server(hostname,port);
+server.start(app);
