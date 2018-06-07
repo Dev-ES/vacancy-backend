@@ -7,6 +7,7 @@ const port = 3000;
 var app = express();
 
 app.get("/", (req, res) => {
+  res.status = 200;
   res.send("OK");
 });
 
