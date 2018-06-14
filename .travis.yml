@@ -1,10 +1,16 @@
 language: node_js
 node_js:
 - node
+addons:
+  sonarcloud:
+    organization: "$SONAR_ORGANIZATION"
+    token:
+      secure: "$SONAR_TOKEN"
 install:
 - npm install
 script:
 - npm test
+- sonar-scanner
 deploy:
   provider: heroku
   api_key:
