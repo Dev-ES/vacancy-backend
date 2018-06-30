@@ -29,7 +29,8 @@
     "typescript": "^2.9.2"
   },
   "dependencies": {
-    "express": "^4.16.3"
+    "express": "^4.16.3",
+    "github-api": "^3.0.0"
   },
   "engines": {
     "node": "8.9.3",
