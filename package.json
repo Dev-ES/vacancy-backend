@@ -26,6 +26,7 @@
     "cucumber": "^4.2.1",
     "nodemon": "^1.17.5",
     "ts-node": "^7.0.0",
+    "tslint": "^5.10.0",
     "typescript": "^2.9.2"
   },
   "dependencies": {
