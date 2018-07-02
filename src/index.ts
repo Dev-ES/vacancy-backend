@@ -1,6 +1,7 @@
+// carregar .env se não estiver em ambiene de produção
+if (process.env.NODE !== "production") require("dotenv-safe").config();
+/* --- */
+
 import App from "./App";
 
-const port:string = process.env.PORT || "3000";
-
-App.express.listen(port);
-console.log("server listening");
+App.listen();
