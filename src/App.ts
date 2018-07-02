@@ -1,5 +1,5 @@
 import * as express from "express";
-import { Request, Response, Application } from "express";
+import { Router, Request, Response, Application } from "express";
 import Repository from "./modules/repository/RepositoryController";
 
 class App {
@@ -11,14 +11,17 @@ class App {
   }
 
   private routes(): void {
-    const router = express.Router();
+    const router = Router();
     router.route("/")
     .get((req: Request, res: Response) => {
       res.send("OK");
     });
 
+    const api: Application = express();
+    api.use(Repository.baseRoute, Repository.router);
+
     this.express.use("/", router);
-    this.express.use(Repository.baseRoute, Repository.router);
+    this.express.use("/api", api);
   }
 
   public listen(): void {
