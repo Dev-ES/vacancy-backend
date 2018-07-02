@@ -4,7 +4,6 @@ import GitHub from "github-api";
 class GitHubHandler {
   private static instance: GitHubHandler;
   private gitHub: GitHub;
-
   private constructor() {
     const GitHub = require("github-api");
     this.gitHub = new GitHub({
@@ -63,6 +62,16 @@ class GitHubHandler {
       const listComments = await Issue.listIssueComments(issueNumber);
       console.log(listComments.data);
       return listComments.data;
+    } catch (error) {
+      throw (error);
+      return undefined;
+    }
+  }
+  public async editComment(id, comment, repo): Promise<boolean> {
+    const Issue: any = this.newIssue(repo);
+    try {
+      await Issue.editIssueComment(id, comment);
+      return true;
     } catch (error) {
       throw (error);
       return undefined;
