@@ -1,18 +1,17 @@
 import { Client, QueryResult } from "pg";
-import { throws } from "assert";
 
 /* Class: PostgreSQL
+ * - Implements Singleton.
  * - Connect and handle a PostgreSQL database.
  * - Requires that the environment variables be defined.
  */
 
 class PostgreSQL {
   private static instance: PostgreSQL;
-  private jobs: number;
 
-  private connectionString: string;
   private client: Client;
   private connected: boolean;
+  private jobs: number;
 
   private constructor() {
     this.client = new Client();
@@ -37,7 +36,7 @@ class PostgreSQL {
       this.connected = true;
       if (process.env.LOGS) console.log("PGSQL: cliente conectado");
     } catch (error) {
-      throws(error);
+      throw new Error(error);
     } finally {
       return;
     }
@@ -54,6 +53,7 @@ class PostgreSQL {
     if (!this.connected) {
       await this.connect();
     }
+    this.incrementJob();
 
     let result: QueryResult;
 
@@ -61,10 +61,21 @@ class PostgreSQL {
       result = await this.client.query(queryStream);
       if (process.env.LOGS) console.log(`PGSQL: resultado da query: ${queryStream}`, result);
     } catch (error) {
-      throws(error);
+      throw new Error(error);
     } finally {
-      await this.disconnect();
+      this.decrementJob();
       return result;
+    }
+  }
+
+  private incrementJob(): void {
+    this.jobs += 1;
+  }
+
+  private async decrementJob(): Promise<void> {
+    this.jobs -= 1;
+    if (this.jobs == 0) {
+      await this.disconnect();
     }
   }
 }
