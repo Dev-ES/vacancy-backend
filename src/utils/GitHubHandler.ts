@@ -18,20 +18,54 @@ class GitHubHandler {
     }
     return this.instance;
   }
-  public teste(): string {
+  public getGitHub(): string {
     return(this.gitHub);
   }
-  public async createIssue(data , repo): boolean {
+  public newIssue(repo): any {
     const repository: any = repo.split("/");
     const user: string = repository[0];
     const repositoryName: string = repository[1];
-    const Issue: any = (this.gitHub.getIssues(user , repositoryName));
+    return (this.gitHub.getIssues(user , repositoryName));
+  }
+  public  async createIssue(data , repo): Promise<boolean> {
+    const Issue: any = this.newIssue(repo);
     try {
-      await Issue.createIssue(data);
+        return await Issue.createIssue(data);
+        return true;
+    } catch (error) {
+      throw(error);
+      return false;
+    }
+  }
+  public async editIssue(issueNumber , issueData , repo): Promise<boolean> {
+    const Issue: any = this.newIssue(repo);
+    try {
+      await Issue.editIssue(issueNumber , issueData);
       return true;
     } catch (error) {
       throw(error);
       return false;
+    }
+  }
+  public async comentIssue(issueNumber, comment , repo): Promise<boolean> {
+    const Issue: any = this.newIssue(repo);
+    try {
+      await Issue.createIssueComment(issueNumber , comment);
+      return true;
+    } catch (error) {
+      throw (error);
+      return false;
+    }
+  }
+  public async listComents(issueNumber , repo): Promise<any> {
+    const Issue: any = this.newIssue(repo);
+    try {
+      const listComments = await Issue.listIssueComments(issueNumber);
+      console.log(listComments.data);
+      return listComments.data;
+    } catch (error) {
+      throw (error);
+      return undefined;
     }
   }
 }
