@@ -1,6 +1,6 @@
 
-interface Save {
+interface Persistent {
   save<T>(): boolean;
 }
 
-export default Save;
+export default Persistent;
