@@ -50,7 +50,7 @@ class PostgreSQL {
     return;
   }
 
-  public async executeQuery(queryStream: string): Promise<QueryResult> {
+  public async executeQuery(queryStream: string): Promise<any[]> {
     if (!this.connected) {
       await this.connect();
     }
@@ -64,9 +64,9 @@ class PostgreSQL {
       throws(error);
     } finally {
       await this.disconnect();
-      return result;
+      return result.rows;
     }
   }
 }
 
-export default PostgreSQL.getInstance();
+export default PostgreSQL;
