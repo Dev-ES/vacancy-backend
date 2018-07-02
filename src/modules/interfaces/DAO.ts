@@ -1,10 +1,10 @@
 
 interface DAO {
-  insert<T>(object: T): boolean;
-  get<T>(objectId: number): T;
-  getAll<T>(): T[];
-  update<T>(object: T): T;
-  delete<T>(objectId: number): boolean;
+  insert<T>(object: T): any;
+  get<T>(objectId: number): any;
+  getAll<T>(): any;
+  update<T>(object: T): any;
+  delete(objectId: number): any;
 }
 
 export default DAO;

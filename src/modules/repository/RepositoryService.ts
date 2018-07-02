@@ -1,6 +1,7 @@
 import Repository from "./Repository";
 
 class RepositoryService {
+
   constructor() {}
 
   newRepository(data): void {
@@ -8,10 +9,9 @@ class RepositoryService {
     repo.save();
   }
 
-  getAllRepository(): Array<Repository> {
-    const data: Array<Repository> = new Array<Repository>();
-    data.push(new Repository({id: 0, nome: "zé", url: "teste"})); // teste - apagar
-    return data;
+  getAllRepository(): Repository[] {
+    /* To do: implementar uso do DAO para obtenção dos dados */
+    return [];
   }
 }
 

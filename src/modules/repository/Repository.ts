@@ -1,12 +1,12 @@
 
 class Repository {
-  id: number;
-  nome: string;
-  url: string;
+  public readonly id: number;
+  public readonly name: string;
+  public readonly url: string;
 
   constructor(data) {
     this.id = data.id;
-    this.nome = data.nome;
+    this.name = data.name;
     this.url = data.url;
   }
 

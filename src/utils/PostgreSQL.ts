@@ -1,4 +1,4 @@
-import { Client, QueryResult, Connection } from "pg";
+import { Client, QueryResult } from "pg";
 import { throws } from "assert";
 
 /* Class: PostgreSQL
@@ -50,7 +50,7 @@ class PostgreSQL {
     return;
   }
 
-  public async executeQuery(queryStream: string): Promise<any[]> {
+  public async executeQuery(queryStream: string): Promise<QueryResult> {
     if (!this.connected) {
       await this.connect();
     }
@@ -64,7 +64,7 @@ class PostgreSQL {
       throws(error);
     } finally {
       await this.disconnect();
-      return result.rows;
+      return result;
     }
   }
 }
