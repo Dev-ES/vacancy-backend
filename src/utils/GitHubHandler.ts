@@ -77,6 +77,16 @@ class GitHubHandler {
       return undefined;
     }
   }
+  public async deleteComment(id, repo): Promise<boolean> {
+    const Issue: any = this.newIssue(repo);
+    try {
+      await Issue.deleteIssueComment(id);
+      return true;
+    } catch (error) {
+      throw (error);
+      return undefined;
+    }
+  }
 }
 
 export default GitHubHandler.getInstance();
