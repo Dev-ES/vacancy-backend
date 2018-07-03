@@ -1,4 +1,5 @@
 import Repository from "./Repository";
+import DAO from "./RepositoryDAOPgSql";
 
 class RepositoryService {
 
@@ -9,9 +10,10 @@ class RepositoryService {
     repo.save();
   }
 
-  getAllRepository(): Repository[] {
+  async getAllRepository(): Promise<Repository[]> {
     /* To do: implementar uso do DAO para obtenção dos dados */
-    return [];
+    const repos: Repository[] = await DAO.getAll();
+    return repos;
   }
 }
 

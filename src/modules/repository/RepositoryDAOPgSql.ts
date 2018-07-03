@@ -10,24 +10,48 @@ class RepositoryDAOPgSql implements RepositoryDAO {
     this.db = PostgreSQL.getInstance();
   }
 
-  insert<Repository>(repo: Repository): Promise<boolean> {
-    throw new Error("Method not implemented.");
+  async insert(repo: Repository): Promise<boolean> {
+    const result: QueryResult = await this.db.executeQuery(`INSERT INTO "repositorio" VALUES (${repo.id},${repo.name}) RETURNING *`);
+    if (result) {
+      return true;
+    }
+    return false;
   }
 
-  get<Repository>(repoId: number): Promise<Repository> {
-    throw new Error("Method not implemented.");
+  async get(repoId: number): Promise<Repository> {
+    const result: QueryResult = await this.db.executeQuery(`SELECT * FROM "repositorio" WHERE id=${repoId}`);
+    if (result) {
+      if (process.env.LOGS) console.log(`RepositoryDAOPgSql.get(${repoId})`, result);
+    }
+    const repo: Repository = new Repository(result.rows[0]);
+    return repo;
   }
 
-  getAll<Repository>(): Promise<Repository[]> {
-    throw new Error("Method not implemented.");
+  async getAll(): Promise<Repository[]> {
+    const result: QueryResult = await this.db.executeQuery(`SELECT * FROM "repositorio"`);
+    const repos: Repository[] = [];
+    if (result) {
+      result.rows.map((row) => {
+        repos.push(new Repository(row));
+      });
+    }
+    return repos;
   }
 
-  update<Repository>(repo: Repository): Promise<Repository> {
-    throw new Error("Method not implemented.");
+  async update(repo: Repository): Promise<Repository> {
+    const result: QueryResult = await this.db.executeQuery(`UPDATE "repositorio" SET (nome)=(${repo.name}) WHERE id=${repo.id} RETURNING *`);
+    if (result) {
+      return new Repository(result.rows[0]);
+    }
+    return undefined;
   }
 
-  delete<Repository>(repoId: number): Promise<boolean> {
-    throw new Error("Method not implemented.");
+  async delete(repoId: number): Promise<boolean> {
+    const result: QueryResult = await this.db.executeQuery(`DELETE FROM "repositorio" WHERE id=${repoId} RETURNING *`);
+    if (result) {
+      return true;
+    }
+    return false;
   }
 }
 

@@ -14,8 +14,8 @@ class RepositoryController {
   routes(): void {
     this.router.route("/")
     // GET /repository
-    .get((req: Request, res: Response) => {
-      const data = Service.getAllRepository();
+    .get(async (req: Request, res: Response) => {
+      const data = await Service.getAllRepository();
       res.send(data);
     })
     // POST /repository

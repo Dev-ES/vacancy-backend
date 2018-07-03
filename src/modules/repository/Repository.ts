@@ -1,17 +1,25 @@
 
 class Repository {
-  public readonly id: number;
-  public readonly name: string;
-  public readonly url: string;
+  private readonly _id: number;
+  private readonly _name: string;
+  private readonly _url: string;
 
   constructor(data) {
-    this.id = data.id;
-    this.name = data.name;
-    this.url = data.url;
+    this._id = data.id;
+    this._name = data.name;
+    this._url = data.url;
   }
 
   save(): void {
 
+  }
+
+  public get id(): number {
+    return this._id;
+  }
+
+  public get name(): string {
+    return this._name;
   }
 }
 
