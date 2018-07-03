@@ -28,7 +28,7 @@ class RepositoryDAOPgSql implements RepositoryDAO {
   }
 
   async getAll(): Promise<Repository[]> {
-    const result: QueryResult = await this.db.executeQuery(`SELECT * FROM "repositorio"`);
+    const result: QueryResult = await this.db.executeQuery(`SELECT id, nome AS name FROM "repositorio"`);
     const repos: Repository[] = [];
     if (result) {
       result.rows.map((row) => {
