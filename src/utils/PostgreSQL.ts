@@ -1,3 +1,4 @@
+require("dotenv-safe").config();
 import { Client, QueryResult } from "pg";
 
 /* Class: PostgreSQL
@@ -9,16 +10,6 @@ import { Client, QueryResult } from "pg";
 class PostgreSQL {
   private static instance: PostgreSQL;
 
-  private client: Client;
-  private connected: boolean;
-  private jobs: number;
-
-  private constructor() {
-    this.client = new Client();
-    this.connected = false;
-    this.jobs = 0;
-  }
-
   public static getInstance(): PostgreSQL {
     if (this.instance === undefined) {
       this.instance = new PostgreSQL();
@@ -26,56 +17,43 @@ class PostgreSQL {
     return this.instance;
   }
 
-  private async connect(): Promise<void> {
-    if (this.connected) {
-      return;
-    }
-
+  private async connect(client: Client): Promise<void> {
     try {
-      await this.client.connect();
-      this.connected = true;
-      if (process.env.LOGS) console.log("PGSQL: cliente conectado");
+      await client.connect();
+      if (process.env.PGLOGS) console.log("PGSQL: cliente conectado");
     } catch (error) {
-      throw new Error(error);
+      console.log("PGSQL: Falha ao conectar à base de dados\n", error);
     } finally {
       return;
     }
   }
 
-  private async disconnect(): Promise<void> {
-    await this.client.end();
-    this.connected = false;
-    if (process.env.LOGS) console.log("PGSQL: cliente desconectado");
-    return;
+  private async disconnect(client: Client): Promise<void> {
+    try {
+      await client.end();
+      if (process.env.PGLOGS) console.log("PGSQL: cliente desconectado");
+    } catch (error) {
+      console.log("PGSQL: Falha ao desconectar da base de dados\n", error);
+    } finally {
+      return;
+    }
   }
 
   public async executeQuery(queryStream: string): Promise<QueryResult> {
-    if (!this.connected) {
-      await this.connect();
-    }
-    this.incrementJob();
+    const client: Client = new Client();
+    await this.connect(client);
 
     let result: QueryResult;
 
     try {
-      result = await this.client.query(queryStream);
-      if (process.env.LOGS) console.log(`PGSQL: resultado da query: ${queryStream}`, result);
+      result = await client.query(queryStream);
+      if (process.env.PGLOGS) console.log(`PGSQL: resultado da query: ${queryStream}\n`, result);
     } catch (error) {
-      throw new Error(error);
+      if (process.env.PGLOGS) console.log(`PGSQL: Falha ao executar Query ${queryStream}\n`, error);
+      /* result === undefined */
     } finally {
-      this.decrementJob();
+      await this.disconnect(client);
       return result;
-    }
-  }
-
-  private incrementJob(): void {
-    this.jobs += 1;
-  }
-
-  private async decrementJob(): Promise<void> {
-    this.jobs -= 1;
-    if (this.jobs == 0) {
-      await this.disconnect();
     }
   }
 }
