@@ -13,16 +13,28 @@ class RepositoryController {
 
   routes(): void {
     this.router.route("/")
-    // GET /repository
+    /* GET /repository
+     * Retorna todos os repositórios
+     */
     .get(async (req: Request, res: Response) => {
       const data = await Service.getAllRepository();
-      res.send(data);
+      res.json(data);
     })
-    // POST /repository
+    /* POST /repository
+     * Cria um novo repositório
+     */
     .post((req: Request, res: Response) => {
       const data = req.body;
       Service.newRepository(data);
-      res.send("OK");
+      res.json({});
+    });
+
+    this.router.route("/:id")
+    /* GET /repository/:id
+     * Retorna os dados de um único repositório
+     */
+    .get(async (req: Request, res: Response) => {
+      res.send("TO DO: Implementar busca de um repositório");
     });
   }
 }
