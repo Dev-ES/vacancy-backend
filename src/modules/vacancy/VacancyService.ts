@@ -1,11 +1,12 @@
 import Vacancy from "./Vacancy";
+import Benefit from "./../benefit/Benefit";
 
 class VacancyService {
   constructor() {}
 
-  newVacancy(data): Vacancy {
-    console.log("Passou");
+  newVacancy(data): void {
+    const v: Vacancy = new Vacancy(data);
   }
 }
 
-export default new RepositoryService();
+export default new VacancyService();
