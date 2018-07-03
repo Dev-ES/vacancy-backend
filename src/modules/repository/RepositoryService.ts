@@ -5,13 +5,12 @@ class RepositoryService {
 
   constructor() {}
 
-  newRepository(data): void {
+  async newRepository(data): Promise<void> {
     const repo: Repository = new Repository(data);
-    repo.save();
+    await repo.save();
   }
 
   async getAllRepository(): Promise<Repository[]> {
-    /* To do: implementar uso do DAO para obtenção dos dados */
     const repos: Repository[] = await DAO.getAll();
     return repos;
   }
