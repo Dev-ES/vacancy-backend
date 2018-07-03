@@ -1,5 +1,5 @@
 import * as express from "express";
-import { Request, Response, Application } from "express";
+import { Router, Request, Response, Application } from "express";
 import Repository from "./modules/repository/RepositoryController";
 
 class App {
@@ -10,17 +10,24 @@ class App {
     this.routes();
   }
 
+  // atribui as rotas ao App
   private routes(): void {
-    const router = express.Router();
-    router.route("/")
-    .get((req: Request, res: Response) => {
+    /*
+     * Configurar API
+     */
+    const api: Application = express();
+    api.use(Repository.baseRoute, Repository.router);
+
+    /*
+     * Configurar App
+     */
+    this.express.get("/", (req: Request, res: Response) => {
       res.send("OK");
     });
-
-    this.express.use("/", router);
-    this.express.use(Repository.baseRoute, Repository.router);
+    this.express.use("/api", api);
   }
 
+  // inicia o App
   public listen(): void {
     this.express.listen(process.env.PORT);
     if (process.env.LOGS) console.log(`Server listening port ${process.env.PORT}`);

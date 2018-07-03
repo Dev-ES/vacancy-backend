@@ -1,23 +1,25 @@
 import * as express from "express";
+import { Router, Request, Response } from "express";
 import Service from "./RepositoryService";
 
 class RepositoryController {
-  baseRoute: string;
-  router: express.Router;
+  readonly baseRoute: string = "/repository";
+  router: Router;
 
   constructor() {
-    this.baseRoute = "/repository";
-    this.router = express.Router();
+    this.router = Router();
     this.routes();
   }
 
   routes(): void {
     this.router.route("/")
-    .get((req, res) => {
-      const data = Service.getAllRepository();
+    // GET /repository
+    .get(async (req: Request, res: Response) => {
+      const data = await Service.getAllRepository();
       res.send(data);
     })
-    .post((req, res) => {
+    // POST /repository
+    .post((req: Request, res: Response) => {
       const data = req.body;
       Service.newRepository(data);
       res.send("OK");
