@@ -1,6 +1,7 @@
 import * as express from "express";
 import { Router, Request, Response, Application } from "express";
 import Repository from "./modules/repository/RepositoryController";
+import Vacancy from "./modules/vacancy/VacancyController";
 
 class App {
   private express: Application;
@@ -19,6 +20,7 @@ class App {
 
     const api: Application = express();
     api.use(Repository.baseRoute, Repository.router);
+    api.use(Vacancy.baseRoute, Vacancy.router);
 
     this.express.use("/", router);
     this.express.use("/api", api);

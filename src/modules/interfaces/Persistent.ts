@@ -1,6 +1,6 @@
 
 interface Persistent {
-  save<T>(): boolean;
+  save(): Promise<boolean>;
 }
 
 export default Persistent;
