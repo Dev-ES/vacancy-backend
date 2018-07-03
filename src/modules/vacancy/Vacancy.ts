@@ -1,4 +1,6 @@
 import Benefit from "./../benefit/Benefit";
+import Requirement from "./../requirement/Requirement";
+
 
 class Vacancy {
   id: number;
@@ -9,6 +11,7 @@ class Vacancy {
   howToApply: String;
   alocado: boolean;
   benefits: Benefit[];
+  requirements: Requirement[];
 
   constructor(data: any) {
     this.id = data.id;
@@ -22,6 +25,13 @@ class Vacancy {
     this.benefits = data.benefits != undefined ? data.benefits.map(
       (benef) => { return new Benefit(benef, data.id); }
     ) : undefined;
+
+    // create requirements list
+    this.requirements = data.requirements != undefined ? data.requirements.map(
+      (requer) => { return new Requirement(requer, data.id); }
+    ) : undefined;
+
+    console.log(this);
   }
 }
 export default Vacancy;
