@@ -8,11 +8,11 @@ class GitHubHandler {
 
   private constructor() {
     const GitHub = require("github-api");
-    this.assignee = "joseslima";
+    this.assignee = process.env.GHUSER;
     this.gitHub = new GitHub(
       {
-        username: "joseslima",
-        password: "Hxptoxpte.1"
+        username: proces.env.GHUSER,
+        password: proces.env.GHPASSWORD
       });
   }
 
