@@ -6,14 +6,15 @@ class Requirement {
   vacancyId: number;
   name: string;
   description: number;
-  // type: RequirementType;
+  type: RequirementType;
 
   constructor(data: any, vacancyId: number) {
-    this.vacancyId = data.vacancyId;
+    console.log(data);
+    this.vacancyId = vacancyId;
     this.id = data.id;
     this.name = data.name;
     this.description = data.description;
-    // this.type = new RequirementType(data.type);
+    this.type = new RequirementType(data.type);
   }
 }
 
