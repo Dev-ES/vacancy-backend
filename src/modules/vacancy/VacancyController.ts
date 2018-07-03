@@ -20,11 +20,13 @@ class VacancyController {
           {
             "id": undefined,
             "name": "Alelo Refeição",
+            "type": {"id": 1 , "name": "Vale Refeição"},
             "value": 200.00
           },
           {
             "id": 555,
             "name": "Plano Unimed",
+            "type": {"id": 2, "name": "Plano de Saúde"},
             "value": undefined
           }
         ]
