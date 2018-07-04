@@ -5,7 +5,7 @@ import EnumProfessionalLevel from "./EnumProfessionalLevel";
 
 class Vacancy {
   id: number;
-  idContratant: number;
+  idEmployer: number;
   title: string;
   description: string;
   contractType: any;
@@ -18,18 +18,18 @@ class Vacancy {
 
   constructor(data: any) {
     this.id = data.id;
-    this.idContratant = data.idContratant;
+    this.idEmployer = data.idEmployer;
     this.title = data.title;
     this.description = data.description;
     this.location = data.location;
     this.howToApply = data.howToApply;
     this.allocated = data.allocated;
 
-    this.contractType["id"] = data.contractType;
-    this.contractType["name"] = EnumConctractType[data.contractType];
+    this.contractType = { "id": data.contractType,
+     "name": EnumConctractType[data.contractType]};
 
-    this.professionalLevel["id"] = data.professionalLevel;
-    this.professionalLevel["name"] = data.professionalLevel;
+    this.professionalLevel = {"id": data.professionalLevel,
+     "name": EnumProfessionalLevel[data.professionalLevel]};
 
     // create benefits list
     this.benefits = data.benefits != undefined ? data.benefits.map(
