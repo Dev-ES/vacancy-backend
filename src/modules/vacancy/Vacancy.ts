@@ -2,6 +2,7 @@ import Benefit from "./../benefit/Benefit";
 import Requirement from "./../requirement/Requirement";
 import EnumConctractType from "./EnumContractType";
 import EnumProfessionalLevel from "./EnumProfessionalLevel";
+import VacancyDAOGitHub from "./VacancyDAOGitHub";
 
 class Vacancy {
   id: number;
@@ -41,6 +42,7 @@ class Vacancy {
       (requer) => { return new Requirement(requer, data.id); }
     ) : undefined;
 
+    const DAO = new VacancyDAOGitHub();
   }
 }
 export default Vacancy;
