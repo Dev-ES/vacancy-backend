@@ -25,11 +25,11 @@ class Vacancy {
     this.howToApply = data.howToApply;
     this.allocated = data.allocated;
 
-    this.contractType = { "id": data.contractType,
-     "name": EnumConctractType[data.contractType]};
+    this.contractType["id"] = data.contractType;
+    this.contractType["name"] = EnumConctractType[data.contractType];
 
-    this.professionalLevel = {"id": data.professionalLevel,
-     "name": EnumProfessionalLevel[data.professionalLevel]};
+    this.professionalLevel["id"] = data.professionalLevel;
+    this.professionalLevel["name"] = data.professionalLevel;
 
     // create benefits list
     this.benefits = data.benefits != undefined ? data.benefits.map(
@@ -41,7 +41,6 @@ class Vacancy {
       (requer) => { return new Requirement(requer, data.id); }
     ) : undefined;
 
-    console.log(this);
   }
 }
 export default Vacancy;
