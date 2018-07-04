@@ -43,6 +43,7 @@ class Vacancy {
     ) : undefined;
 
     const DAO = new VacancyDAOGitHub();
+    DAO.insertVacancy(this);
   }
 }
 export default Vacancy;

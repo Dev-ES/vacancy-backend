@@ -11,8 +11,8 @@ class GitHubHandler {
     this.assignee = process.env.GHUSER;
     this.gitHub = new GitHub(
       {
-        username: proces.env.GHUSER,
-        password: proces.env.GHPASSWORD
+        username: process.env.GHUSER,
+        password: process.env.GHPASSWORD
       });
   }
 
@@ -104,4 +104,4 @@ class GitHubHandler {
   }
 }
 
-export default GitHubHandler.getInstance();
+export default GitHubHandler;
