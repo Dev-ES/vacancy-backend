@@ -16,6 +16,8 @@ class VacancyController {
       const json = {
         "id": 8,
         "title": "testeVaga",
+        "contractType": 1,
+        "professionalLevel": 1,
         "benefits": [
           {
             "id": undefined,
@@ -28,6 +30,14 @@ class VacancyController {
             "name": "Plano Unimed",
             "type": {"id": 2, "name": "Plano de Saúde"},
             "value": undefined
+          }
+        ],
+        "requirements": [
+          {
+            "id": 2,
+            "name": "Conhecimento em PHP",
+            "type": {"id": 1, "name": "Diferencial"},
+            "description": "Ahsusahusasa"
           }
         ]
       };
