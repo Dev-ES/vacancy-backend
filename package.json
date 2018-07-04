@@ -1,0 +1,44 @@
+{
+  "name": "vacancy-backend",
+  "version": "1.0.0",
+  "description": "Aplicação server-side para ferramenta de gestão de vagas para desenvolvedores de software",
+  "main": "src/index.ts",
+  "scripts": {
+    "start": "nodemon src/index.ts --exec ts-node",
+    "build": "tsc",
+    "prod": "node build/index.js",
+    "test": "npm run cucumber",
+    "cucumber": "cucumber-js ./test/features -r ./test/steps",
+    "heroku-postbuild": "npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Dev-ES/vacancy-backend.git"
+  },
+  "author": "garymsilva && joseslima",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Dev-ES/vacancy-backend/issues"
+  },
+  "homepage": "https://github.com/Dev-ES/vacancy-backend#readme",
+  "devDependencies": {
+    "@types/express": "^4.16.0",
+    "@types/node": "^10.5.0",
+    "@types/pg": "^7.4.10",
+    "cucumber": "^4.2.1",
+    "dotenv-safe": "^6.0.0",
+    "nodemon": "^1.17.5",
+    "ts-node": "^7.0.0",
+    "tslint": "^5.10.0",
+    "typescript": "^2.9.2"
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "github-api": "^3.0.0",
+    "pg": "^7.4.3"
+  },
+  "engines": {
+    "node": "8.9.3",
+    "npm": "5.5.1"
+  }
+}
