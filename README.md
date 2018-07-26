@@ -1,3 +1,38 @@
-**VAGAS - BACKEND**
-===================
-[![Build Status](https://travis-ci.org/Dev-ES/vacancy-backend.svg?branch=develop)](https://travis-ci.org/Dev-ES/vacancy-backend)
+# vacancy
+
+## Description
+
+Vagas - Backend
+
+## Installation
+
+```bash
+$ npm install
+```
+
+## Running the app
+
+```bash
+# development
+$ npm run start
+
+# watch mode
+$ npm run start:dev
+
+# production mode
+npm run start:prod
+```
+
+## Test
+
+```bash
+# unit tests
+$ npm run test
+
+# e2e tests
+$ npm run test:e2e
+
+# test coverage
+$ npm run test:cov
+```
+

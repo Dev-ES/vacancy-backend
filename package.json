@@ -1,44 +1,83 @@
 {
-  "name": "vacancy-backend",
-  "version": "1.0.0",
-  "description": "Aplicação server-side para ferramenta de gestão de vagas para desenvolvedores de software",
-  "main": "src/index.ts",
-  "scripts": {
-    "start": "nodemon src/index.ts --exec ts-node",
-    "build": "tsc",
-    "prod": "node build/index.js",
-    "test": "npm run cucumber",
-    "cucumber": "cucumber-js ./test/features -r ./test/steps",
-    "heroku-postbuild": "npm run build"
-  },
-  "repository": {
-    "type": "git",
-    "url": "https://github.com/Dev-ES/vacancy-backend.git"
-  },
-  "author": "garymsilva && joseslima",
+  "name": "vacancy",
+  "version": "0.0.0",
+  "description": "Vagas - Backend",
+  "author": "",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/Dev-ES/vacancy-backend/issues"
-  },
-  "homepage": "https://github.com/Dev-ES/vacancy-backend#readme",
-  "devDependencies": {
-    "@types/express": "^4.16.0",
-    "@types/node": "^10.5.0",
-    "@types/pg": "^7.4.10",
-    "cucumber": "^4.2.1",
-    "dotenv-safe": "^6.0.0",
-    "nodemon": "^1.17.5",
-    "ts-node": "^7.0.0",
-    "tslint": "^5.10.0",
-    "typescript": "^2.9.2"
+  "scripts": {
+    "format": "prettier --write \"**/*.ts\"",
+    "start": "ts-node -r tsconfig-paths/register src/main.ts",
+    "start:dev": "nodemon",
+    "prestart:prod": "rm -rf dist && tsc",
+    "start:prod": "node dist/main.js",
+    "start:hmr": "node dist/server",
+    "test": "jest",
+    "test:cov": "jest --coverage",
+    "test:e2e": "jest --config ./test/jest-e2e.json",
+    "webpack": "webpack --config webpack.config.js",
+    "commit": "git-cz",
+    "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
+    "release": "standard-version",
+    "czInstall": "npm install commitizen -g --save-dev && commitizen init cz-conventional-changelog --save-dev --save-exact",
+    "sudoCzInstall": "sudo npm install commitizen -g --save-dev && commitizen init cz-conventional-changelog --save-dev --save-exact"
   },
   "dependencies": {
-    "express": "^4.16.3",
-    "github-api": "^3.0.0",
-    "pg": "^7.4.3"
+    "@nestjs/common": "^5.0.0",
+    "@nestjs/core": "^5.0.0",
+    "fastify-formbody": "^2.0.0",
+    "reflect-metadata": "^0.1.12",
+    "rxjs": "^6.0.0",
+    "typescript": "^2.6.2"
   },
-  "engines": {
-    "node": "8.9.3",
-    "npm": "5.5.1"
+  "devDependencies": {
+    "@nestjs/testing": "^5.0.0",
+    "@types/express": "^4.0.39",
+    "@types/jest": "^21.1.8",
+    "@types/node": "^9.3.0",
+    "@types/supertest": "^2.0.4",
+    "commitizen": "^2.10.1",
+    "cz-conventional-changelog": "^2.1.0",
+    "husky": "^1.0.0-rc.13",
+    "jest": "^21.2.1",
+    "nodemon": "^1.14.1",
+    "prettier": "^1.11.1",
+    "standard-version": "^4.4.0",
+    "supertest": "^3.0.0",
+    "ts-jest": "^21.2.4",
+    "ts-loader": "^4.1.0",
+    "ts-node": "^4.1.0",
+    "tsconfig-paths": "^3.1.1",
+    "tslint": "5.3.2",
+    "validate-commit-msg": "^2.14.0",
+    "webpack": "^4.2.0",
+    "webpack-cli": "^2.0.13",
+    "webpack-node-externals": "^1.6.0"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js",
+      "json",
+      "ts"
+    ],
+    "rootDir": "src",
+    "testRegex": ".spec.ts$",
+    "transform": {
+      "^.+\\.(t|j)s$": "ts-jest"
+    },
+    "coverageDirectory": "../coverage"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "validate-commit-msg": {
+      "types": "conventional-commit-types",
+      "helpMessage": "Use \"npm run commit\" instead, we use conventional-changelog format :) (https://github.com/commitizen/cz-cli)"
+    }
+  },
+  "husky": {
+    "hooks": {
+      "commit-msg": "validate-commit-msg"
+    }
   }
 }
