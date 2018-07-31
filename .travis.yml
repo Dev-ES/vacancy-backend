@@ -18,5 +18,4 @@ deploy:
   app:
     develop: vacancy-backend
 notifications:
-  slack:
-    secure: "$SLACK_TOKEN"
+  slack: vacancy-development:1EHiA6AOGYiX00GvwKWBPfoy
