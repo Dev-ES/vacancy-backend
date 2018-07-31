@@ -1,6 +1,6 @@
 language: node_js
 node_js:
-- node
+- "node"
 addons:
   sonarcloud:
     organization: "$SONAR_ORGANIZATION"
@@ -17,6 +17,5 @@ deploy:
     secure: "$HEROKU_API_KEY"
   app:
     develop: vacancy-backend
-    feature/configure-continuous-integration: vacancy-backend
 notifications:
-  slack: "bsi-ifserra:xPzy7oEVH2xDQRP2CZ6WEECm"
+  slack: vacancy-development:1EHiA6AOGYiX00GvwKWBPfoy
