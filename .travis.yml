@@ -17,5 +17,5 @@ deploy:
     secure: "$HEROKU_API_KEY"
   app:
     develop: vacancy-backend
-#notifications:
-#  slack: ""
+notifications:
+  slack: "$SLACK_TOKEN"
