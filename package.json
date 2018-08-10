@@ -16,9 +16,10 @@
     "test": "jest",
     "test:cov": "jest --coverage",
     "test:e2e": "jest --config ./test/jest-e2e.json",
+    "test:cucumber": "cucumber-js",
     "webpack": "webpack --config webpack.config.js",
     "commit": "git-cz",
-    "custom-tests": "echo \"(No other custom tests yet.)\" && echo",
+    "travis-test": "npm run test && npm run test:cov && npm run test:e2e && npm run test:cucumber",
     "release": "standard-version",
     "czInstall": "npm install commitizen -g --save-dev && commitizen init cz-conventional-changelog --save-dev --save-exact",
     "sudoCzInstall": "sudo npm install commitizen -g --save-dev && commitizen init cz-conventional-changelog --save-dev --save-exact"
@@ -33,11 +34,13 @@
   },
   "devDependencies": {
     "@nestjs/testing": "^5.0.0",
+    "@types/cucumber": "^4.0.4",
     "@types/express": "^4.0.39",
     "@types/jest": "^21.1.8",
     "@types/node": "^9.3.0",
     "@types/supertest": "^2.0.4",
     "commitizen": "^2.10.1",
+    "cucumber": "^4.2.1",
     "cz-conventional-changelog": "^2.1.0",
     "husky": "^1.0.0-rc.13",
     "jest": "^21.2.1",
@@ -68,6 +71,14 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "coverageDirectory": "../coverage"
+  },
+  "cucumber": {
+    "logLevel": "error",
+    "require": "test/steps/**/*.step.ts",
+    "format-options": {
+      "snippetInterface": "synchronous"
+    },
+    "require-module": "ts-node/register"
   },
   "config": {
     "commitizen": {
